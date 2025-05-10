@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulces Típicos de Doña Carmen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-candy-cane"></i> Dulces de Doña Carmen
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menú</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#order">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#track">Seguimiento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Nosotros</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="display-4">Los mejores dulces típicos de Los Guandules</h1>
+            <p class="lead">Dulces tradicionales hechos con amor y recetas ancestrales</p>
+            <a href="#order" class="btn btn-primary btn-lg mt-3">Haz tu pedido ahora</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Nuestro Menú</h2>
+            <div class="row">
+                <!-- Dulce 1 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" class="card-img-top" alt="Biscocho de Chocolate">
+                        <div class="card-body">
+                            <h5 class="card-title">Biscocho de Chocolate</h5>
+                            <p class="card-text">Delicios Biscocho artesanal hecho con chocolate leche y otros ingredientes.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$250</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="1">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dulce 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <!-- ponerle una imagen la pagina para ver imagenes puede ser unsplash,muy buena --> 
+                        <img src="https://media.istockphoto.com/id/471337366/photo/slice-of-tres-leches-cake.jpg?s=1024x1024&w=is&k=20&c=wCPHERHkK7V4qnMK9dq5Iop59IIN6yrHk8j4w28F4FE=" class="card-img-top" alt="Dulce de Tres leche">  <!-- algun dulce reconocido aqui -->
+                        <div class="card-body">
+                            <h5 class="card-title">Dulce de Tres leches</h5>
+                            <p class="card-text">Delicios dulce de tres leches..</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$300</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="2">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dulce 3 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="data:image/jpeg;base64,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" class="card-img-top" alt="Flan">
+                        <div class="card-body">
+                            <h5 class="card-title">Flan</h5>
+                            <p class="card-text">Pequeñas delicias de flan entero con dulce de leche.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$400</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="3">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- mas dulces -->
+            <div class="row mt-4">
+                <!-- Dulce 4 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1558326567-98ae2405596b" class="card-img-top" alt="Alfajores">
+                        <div class="card-body">
+                            <h5 class="card-title">Alfajores</h5>
+                            <p class="card-text">Galletas rellenas de dulce de leche, espolvoreadas con azúcar glass.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$400</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="4">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dulce 5 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://media.istockphoto.com/id/1753975566/photo/assorted-donuts-with-chocolate-frosting-topping-sprinkles-donuts-colorful-variety-and-variety.jpg?s=1024x1024&w=is&k=20&c=ptuGG3qgvy8JVRrathl9Ppw3O4YTYASv1pbUqedUFqc=" class="card-img-top" alt="Donas">
+                        <div class="card-body">
+                            <h5 class="card-title">Donas</h5>
+                            <p class="card-text">Pequeños aperitivos.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$200</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="5">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dulce 6 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb" class="card-img-top" alt="Panelitas">
+                        <div class="card-body">
+                            <h5 class="card-title">Panelitas</h5>
+                            <p class="card-text">Dulces de leche en forma de panelas, crocantes por fuera y suaves por dentro.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">$500</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-id="6">Añadir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Realiza tu Pedido</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Tu Carrito</h5>
+                            <div id="cart-items" class="mb-3">
+                                <!-- aqui estan los items del carrito -->
+                                <p class="text-muted">Tu carrito está vacío</p>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Envío:</span>
+                                <span id="shipping">$0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between fw-bold">
+                                <span>Total:</span>
+                                <span id="total">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- QR Code for Payment -->
+                    <div class="qr-code mt-4">
+                        <h5 class="mb-3">Pago Móvil</h5>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://donacarmen-dulces.com/pago/12345" alt="QR Code para pago" class="img-fluid mb-2">
+                        <p class="small text-muted">Escanea este código con tu app de banca móvil</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Información de Entrega</h5>
+                            <form id="order-form">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nombre Completo</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Dirección</label>
+                                    <input type="text" class="form-control" id="address" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="zone" class="form-label">Zona</label>
+                                    <select class="form-select" id="zone" required>
+                                        <option value="" selected disabled>Selecciona tu zona</option>
+                                        <option value="1">Los Guandules Centro</option>
+                                        <option value="2">Los Guandules Norte</option>
+                                        <option value="3">Los Guandules Sur</option>
+                                        <option value="4">Zona Colonial</option>
+                                        <option value="5">Otra zona</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="notes" class="form-label">Notas adicionales</label>
+                                    <textarea class="form-control" id="notes" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Confirmar Pedido</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Tracking -->
+    <section id="track" class="track-order py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Seguimiento de Pedidos</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Consulta el estado de tu pedido</h5>
+                            <form id="track-form" class="row g-3">
+                                <div class="col-md-8">
+                                    <label for="order-id" class="form-label">Número de Pedido</label>
+                                    <input type="text" class="form-control" id="order-id" placeholder="Ej: DC-12345" required>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-primary w-100">Consultar</button>
+                                </div>
+                            </form>
+                            
+                            <div id="tracking-result" class="mt-4" style="display: none;">
+                                <h6>Estado del Pedido:</h6>
+                                <div class="progress mt-2 mb-3">
+                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">En preparación</div>
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Pedido recibido
+                                        <span class="badge bg-primary rounded-pill"><i class="fas fa-check"></i></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        En preparación
+                                        <span class="badge bg-primary rounded-pill"><i class="fas fa-check"></i></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        En camino
+                                        <span class="badge bg-secondary rounded-pill"><i class="fas fa-clock"></i></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Entregado
+                                        <span class="badge bg-secondary rounded-pill"><i class="fas fa-clock"></i></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2>Doña Carmen</h2>
+                    <p class="lead">Más de 20 años endulzando Los Guandules</p>
+                    <p>Doña Carmen comenzó su negocio de dulces típicos en el año 2000, con la receta de su abuela y mucho amor por la tradición. Hoy, sus dulces son famosos en todo el barrio y siguen siendo preparados artesanalmente con los mejores ingredientes.</p>
+                    <p>Nuestro compromiso es mantener vivas las recetas tradicionales mientras innovamos con un servicio moderno y conveniente para nuestros clientes.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831" class="img-fluid rounded" alt="Doña Carmen preparando dulces">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-candy-cane"></i> Dulces de Doña Carmen</h5>
+                    <p>Los auténticos sabores de Los Guandules</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-phone"></i> (809) 555-1234</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Calle Principal #25, Los Guandules</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Horario</h5>
+                    <p>Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                    <p>Sábados: 9:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 Dulces de Doña Carmen. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">¡Pedido Confirmado!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Gracias por tu pedido. Tu número de seguimiento es: <strong id="order-number">DC-12345</strong></p>
+                    <p>Puedes rastrear tu pedido en cualquier momento en nuestra sección de seguimiento.</p>
+                    <div class="alert alert-info mt-3">
+                        <p class="mb-1"><strong>Recomendación de precio:</strong></p>
+                        <p>Nuestro sistema sugiere que para esta zona y cantidad de productos, el precio óptimo sería <strong>$2000</strong> (incluye envío).</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Chatbot -->
+   <div id="chatbot-button" class="chatbot-button">
+    <i class="fas fa-comment-alt fa-lg"></i>
+   </div>
+ 
+ <div id="chatbot-window" class="chatbot-window">
+   <div class="chatbot-header">
+     <strong>Asistente de Doña Carmen</strong>
+     
+   </div>
+   <div id="chatbot-messages" class="chatbot-messages">
+     <div class="bot-message">¡Hola! ¿En qué puedo ayudarte hoy? </div>
+   </div>
+   <form id="chatbot-form" class="chatbot-form">
+     <input type="text" id="chatbot-input" placeholder="Escribe tu mensaje..." required>
+     <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+   </form>
+ </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

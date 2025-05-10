@@ -43,6 +43,8 @@
                 }
                 
                 updateCart();
+                localStorage.setItem('cart', JSON.stringify(cart));
+                mostrarRecomendaciones();
             });
         });
         
@@ -63,7 +65,8 @@
             
             let html = '';
             let subtotal = 0;
-            
+
+        
             cart.forEach(item => {
                 subtotal += item.price * item.quantity;
                 html += `
@@ -103,9 +106,11 @@
                     const productId = this.getAttribute('data-id');
                     cart = cart.filter(item => item.id !== productId);
                     updateCart();
+                    localStorage.setItem('cart', JSON.stringify(cart));//
+                    
                 });
             });
-            localStorage.setItem('cart', JSON.stringify(cart));//
+           
         }
         
         // Calcular envio cuando cambia la zona
@@ -145,7 +150,7 @@
 			};
 
 			// ENVÍA el pedido al servidor
-			fetch('http://localhost:3000/api/pedidos', {
+			fetch('https://dona-carmen-backend.onrender.com/api/pedidos', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -172,7 +177,7 @@
 			e.preventDefault();
 			const orderId = document.getElementById('order-id').value;
 
-			fetch(`http://localhost:3000/api/pedidos/${orderId}`)
+			fetch(`https://dona-carmen-backend.onrender.com/api/pedidos/${orderId}`)
 				.then(response => {
 					if (!response.ok) {
 						throw new Error('Pedido no encontrado');
@@ -202,7 +207,8 @@
 					resultDiv.style.display = 'block';
 				});
 		});
-
+  
+      
         // Chatbot
         const chatbotButton = document.getElementById('chatbot-button');
         const chatbotWindow = document.getElementById('chatbot-window');
@@ -265,9 +271,69 @@
          chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
   
+    
        // Eliminar "Escribiendo..."
        function removeTyping() {
         document.querySelectorAll('.bot-message').forEach(msg => {
         if (msg.textContent === 'Escribiendo...') msg.remove();
         });
+
          }
+         // Mostrar recomendaciones de Produtos.
+         function mostrarRecomendaciones() {
+          let recomendaciones = [];
+          const idsEnCarrito = cart.map(item => item.id);
+      
+          // Regla 1: Biscocho sin Flan
+          if (idsEnCarrito.includes('1') && !idsEnCarrito.includes('3')) {
+              recomendaciones.push('¿Ya probaste nuestro <strong>Flan</strong>? ¡Combina perfecto con el Biscocho!');
+          }
+      
+          // Regla 2: Todo económico
+          const carritoBarato = cart.every(item => item.price < 300);
+          if (carritoBarato && !idsEnCarrito.includes('5')) {
+              recomendaciones.push('¿Te animas con unas <strong>Donas</strong>? ¡Son económicas y deliciosas!');
+          }
+      
+          // Regla 3: Flan y Tres Leches → sugiere Alfajores
+          if (idsEnCarrito.includes('2') && idsEnCarrito.includes('3') && !idsEnCarrito.includes('4')) {
+              recomendaciones.push('¿Por qué no pruebas nuestros <strong>Alfajores</strong>? Son el complemento perfecto a los postres cremosos.');
+          }
+      
+          // Regla 4: Solo Panelitas → sugiere Donas
+          if (cart.length === 1 && idsEnCarrito.includes('6') && !idsEnCarrito.includes('5')) {
+              recomendaciones.push('¿Quieres un balance? Agrega unas <strong>Donas</strong> junto a tus Panelitas.');
+          }
+      
+          // Regla 5: Combo variado → sugiere otro producto que aún no esté
+          const sugerenciasAlternativas = [
+              { id: '4', nombre: 'Alfajores' },
+              { id: '5', nombre: 'Donas' },
+              { id: '3', nombre: 'Flan' }
+          ];
+          if (cart.length >= 2) {
+              for (const sugerencia of sugerenciasAlternativas) {
+                  if (!idsEnCarrito.includes(sugerencia.id)) {
+                      recomendaciones.push(`¿Quieres un postre adicional? Prueba nuestros <strong>${sugerencia.nombre}</strong>.`);
+                      break; // solo muestra una sugerencia
+                  }
+              }
+          }
+      
+          // Mostrar recomendaciones si hay
+          if (recomendaciones.length > 0) {
+              mostrarAlertaFlotante(recomendaciones.join('<br>'));
+          }
+      }
+           
+         function mostrarAlertaFlotante(mensaje) {
+          const alerta = document.getElementById('floating-alert');
+          const texto = document.getElementById('floating-alert-text');
+          
+          texto.innerHTML = mensaje;
+          alerta.style.display = 'block';
+      
+          setTimeout(() => {
+              alerta.style.display = 'none';
+          }, 5000);
+      }

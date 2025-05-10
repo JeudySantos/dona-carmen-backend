@@ -1,7 +1,7 @@
 {
   "name": "proyecto",
   "version": "1.0.0",
-  "description": "Servidor para pedididos de Doña Carmen",
+  "description": "",
   "main": "servidor.js",
   "scripts": {
     "start": "node servidor.js"
@@ -9,9 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "better-sqlite3": "^11.9.1",
+    "better-sqlite3": "^11.10.0",
     "cors": "^2.8.5",
     "express": "^5.1.0"
   }
